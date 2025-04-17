@@ -16,7 +16,7 @@ def play_game():
     mistakes = 0
     guessed_letters = []
     while True:
-        if mistakes == 3:
+        if mistakes == 4:
             print(f"Game Over! The word was: {secret_word}")
             get_snowman_stage(mistakes)
             ask_to_play_again()
