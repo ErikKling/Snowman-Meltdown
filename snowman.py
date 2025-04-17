@@ -43,7 +43,7 @@ def get_snowman_stage(stage):
 def play_game():
     secret_word = get_random_word()
     print("Welcome to Snowman Meltdown!")
-    print("Secret word selected: " + secret_word)  # for testing, later remove this line
+    print("Secret word selected: " + secret_word)
 
     mistakes = 0
     while True:
@@ -53,7 +53,10 @@ def play_game():
             exit()
         else: 
             get_snowman_stage(mistakes)
-            guess = input("Guess a letter: ").lower()
+            print("Word: ", end="")
+            for char in secret_word:
+                print("_", end=" ")
+            guess = input("\n\nGuess a letter: ").lower()
             if guess in secret_word:
                 print("Correct:", guess)
             else:
