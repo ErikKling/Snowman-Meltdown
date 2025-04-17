@@ -29,6 +29,9 @@ def play_game():
                 else:
                     print("_", end=" ")
             guess = input("\n\nGuess a letter: ").lower()
+            if len(guess) != 1 or not guess.isalpha():
+                print("Invalid input. Please enter a single letter.")
+                continue
             guessed_letters.append(guess)
 
 
