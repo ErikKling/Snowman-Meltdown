@@ -62,10 +62,23 @@ def play_game():
                     print("_", end=" ")
             guess = input("\n\nGuess a letter: ").lower()
             guessed_letters.append(guess)
-            if guess in secret_word:
-                print("Correct:", guess)
-            else:
+
+
+            if guess not in secret_word:
                 mistakes += 1
-    
+            
+        # Check if all letters have been guessed
+        all_guessed = True
+        for letter in secret_word:
+            if letter not in guessed_letters:
+                all_guessed = False
+                break
+
+        if all_guessed:
+            print(f"\nCongratulations, you saved the snowman! The word was: {secret_word}")
+            get_snowman_stage(mistakes)
+            break
+
+
 if __name__ == "__main__":
     play_game()
