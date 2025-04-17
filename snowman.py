@@ -37,15 +37,19 @@ def get_random_word():
     """Selects a random word from the list."""
     return WORDS[random.randint(0, len(WORDS) - 1)]
 
+
 def play_game():
     secret_word = get_random_word()
     print("Welcome to Snowman Meltdown!")
     print("Secret word selected: " + secret_word)  # for testing, later remove this line
 
-    # TODO: Build your game loop here.
-    # For now, simply prompt the user once:
-    guess = input("Guess a letter: ").lower()
-    print("You guessed:", guess)
+    mistakes = 0
+    while True:
+        guess = input("Guess a letter: ").lower()
+        if guess in secret_word:
+            print("Correct:", guess)
+        else:
+            mistakes += 1
     
 if __name__ == "__main__":
     play_game()
