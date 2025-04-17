@@ -46,6 +46,7 @@ def play_game():
     print("Secret word selected: " + secret_word)
 
     mistakes = 0
+    guessed_letters = []
     while True:
         if mistakes == 3:
             print(f"Game Over! The word was: {secret_word}")
@@ -55,8 +56,12 @@ def play_game():
             get_snowman_stage(mistakes)
             print("Word: ", end="")
             for char in secret_word:
-                print("_", end=" ")
+                if char in guessed_letters:
+                    print(char, end=" ")
+                else:
+                    print("_", end=" ")
             guess = input("\n\nGuess a letter: ").lower()
+            guessed_letters.append(guess)
             if guess in secret_word:
                 print("Correct:", guess)
             else:
