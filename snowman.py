@@ -37,6 +37,8 @@ def get_random_word():
     """Selects a random word from the list."""
     return WORDS[random.randint(0, len(WORDS) - 1)]
 
+def get_snowman_stage(stage):
+    print(STAGES[stage])
 
 def play_game():
     secret_word = get_random_word()
@@ -45,11 +47,17 @@ def play_game():
 
     mistakes = 0
     while True:
-        guess = input("Guess a letter: ").lower()
-        if guess in secret_word:
-            print("Correct:", guess)
-        else:
-            mistakes += 1
+        if mistakes == 3:
+            print(f"Game Over! The word was: {secret_word}")
+            get_snowman_stage(mistakes)
+            exit()
+        else: 
+            get_snowman_stage(mistakes)
+            guess = input("Guess a letter: ").lower()
+            if guess in secret_word:
+                print("Correct:", guess)
+            else:
+                mistakes += 1
     
 if __name__ == "__main__":
     play_game()
