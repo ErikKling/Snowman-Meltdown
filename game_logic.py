@@ -19,7 +19,7 @@ def play_game():
         if mistakes == 3:
             print(f"Game Over! The word was: {secret_word}")
             get_snowman_stage(mistakes)
-            exit()
+            ask_to_play_again()
         else: 
             get_snowman_stage(mistakes)
             print("Word: ", end="")
@@ -48,4 +48,20 @@ def play_game():
         if all_guessed:
             print(f"\nCongratulations, you saved the snowman! The word was: {secret_word}")
             get_snowman_stage(mistakes)
-            break
+            ask_to_play_again()
+
+def ask_to_play_again():
+    while True:
+        try:
+            play_again = input("Do you wanna play again (yes/no): ").lower()
+            print("")
+            if play_again == "yes":
+                play_game()
+                break  # Wichtig, damit die Schleife nicht ewig weiterläuft
+            elif play_again == "no":
+                print("Thanks for playing!")
+                exit()
+            else:
+                raise ValueError
+        except ValueError:
+            print("Invalid input. Please type 'yes' or 'no'.\n")
